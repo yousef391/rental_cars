@@ -1,0 +1,180 @@
+CarRental Pro - User Manual & Documentation
+============================================
+
+Version: 1.0.0
+Date: December 2024
+
+Table of Contents
+=================
+1. Introduction
+2. Installation Guide
+3. Getting Started
+4. Features Overview
+5. User Guide
+6. Troubleshooting
+7. Support
+
+1. Introduction
+===============
+CarRental Pro is a comprehensive offline car rental management system designed for small to medium-sized car rental businesses. Built with Flutter, it provides a modern, responsive interface for managing vehicles, customers, rentals, and generating professional contracts.
+
+Key Features:
+- Vehicle Management
+- Customer Management
+- Rental Scheduling
+- Contract Generation
+- Analytics & Reports
+- Multi-Language Support
+- Offline Operation
+
+2. Installation Guide
+=====================
+
+System Requirements:
+- Windows 10 or Windows 11 (64-bit)
+- 4 GB RAM minimum (8 GB recommended)
+- 500 MB available disk space
+- No internet connection required
+
+Installation Steps:
+1. Download CarRentalPro-Windows.zip
+2. Extract the zip file to a folder of your choice
+3. Double-click offline_rent_car.exe to run the application
+4. The application will start and create necessary data folders
+
+Note: No installation process required - this is a portable application.
+
+3. Getting Started
+==================
+
+First Launch:
+1. Run the application
+2. The system will initialize and create default data structure
+3. You can start adding vehicles, customers, and creating rentals
+
+Navigation:
+- Use the sidebar navigation to access different sections
+- Each section has its own management interface
+- Data is automatically saved locally
+
+4. Features Overview
+====================
+
+Vehicle Management:
+- Add, edit, and delete vehicles
+- Track vehicle details (make, model, year, license plate)
+- Monitor vehicle status (available, rented, maintenance)
+- Upload vehicle images
+- Track maintenance history
+
+Customer Management:
+- Maintain customer database
+- Track customer information and contact details
+- View rental history per customer
+- Customer loyalty system (stars for frequent renters)
+- Search and filter customers
+
+Rental Management:
+- Create new rentals with vehicle and customer selection
+- Set rental dates and duration
+- Calculate rental costs
+- Track rental status (active, completed, cancelled)
+- Generate rental contracts
+
+Calendar View:
+- Visual calendar interface
+- See vehicle availability at a glance
+- Color-coded rental status
+- Easy date selection for rentals
+
+Contract Generation:
+- Professional PDF contract generation
+- Customizable company information
+- Automatic contract numbering
+- Print or save contracts
+
+Analytics & Reports:
+- Revenue tracking and analysis
+- Vehicle performance metrics
+- Customer statistics
+- Business insights and trends
+
+5. User Guide
+=============
+
+Adding a Vehicle:
+1. Go to Vehicles section
+2. Click "Add Vehicle" button
+3. Fill in vehicle details (make, model, year, license plate)
+4. Upload vehicle image (optional)
+5. Set initial status (available)
+6. Save the vehicle
+
+Adding a Customer:
+1. Go to Customers section
+2. Click "Add Customer" button
+3. Enter customer information (name, phone, email, address)
+4. Save the customer
+
+Creating a Rental:
+1. Go to Rentals section
+2. Click "Add Rental" button
+3. Select customer from dropdown
+4. Select vehicle from available vehicles
+5. Set pickup and return dates
+6. Enter rental terms and conditions
+7. Save the rental
+
+Generating a Contract:
+1. From the rental list, click "Generate Contract"
+2. The system will create a professional PDF contract
+3. Contract includes all rental details and company information
+4. Print or save the contract
+
+6. Troubleshooting
+==================
+
+Common Issues:
+
+Application won't start:
+- Ensure you have Windows 10 or 11
+- Check if antivirus is blocking the application
+- Try running as administrator
+
+Data not saving:
+- Check if the application has write permissions
+- Ensure sufficient disk space
+- Restart the application
+
+Contract generation fails:
+- Check if PDF viewer is installed
+- Ensure printer drivers are installed
+- Verify company settings are configured
+
+Performance issues:
+- Close other applications to free up memory
+- Restart the application
+- Check available disk space
+
+7. Support
+==========
+
+For technical support:
+- Email: support@carrentalpro.com
+- Phone: +213 123 456 789
+- Location: Algeria
+
+Documentation Updates:
+- Check for updates on the official website
+- Review changelog for new features
+- Follow installation guides for updates
+
+License Information:
+- This software is provided under MIT License
+- Free for commercial and personal use
+- Source code available for customization
+
+---
+
+Thank you for choosing CarRental Pro!
+Your complete car rental management solution. 

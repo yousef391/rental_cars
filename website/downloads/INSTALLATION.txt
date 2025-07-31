@@ -1,0 +1,63 @@
+CarRental Pro - Installation Guide
+==================================
+
+QUICK INSTALLATION (Windows)
+============================
+
+1. DOWNLOAD
+   - Download "CarRentalPro-Windows.zip" from the website
+   - Save it to your computer (Desktop or Documents folder)
+
+2. EXTRACT
+   - Right-click on "CarRentalPro-Windows.zip"
+   - Select "Extract All..."
+   - Choose a destination folder (e.g., C:\CarRentalPro)
+   - Click "Extract"
+
+3. RUN
+   - Navigate to the extracted folder
+   - Double-click "offline_rent_car.exe"
+   - The application will start immediately
+
+4. FIRST LAUNCH
+   - The system will create necessary data folders
+   - You can start using the application right away
+   - No additional installation required
+
+SYSTEM REQUIREMENTS
+===================
+- Windows 10 or Windows 11 (64-bit)
+- 4 GB RAM minimum (8 GB recommended)
+- 500 MB available disk space
+- No internet connection required
+
+TROUBLESHOOTING
+===============
+
+If the application won't start:
+1. Make sure you have Windows 10 or 11
+2. Try running as administrator (right-click > Run as administrator)
+3. Check if your antivirus is blocking the application
+4. Ensure you have sufficient disk space
+
+If you get security warnings:
+1. Windows may show a security warning
+2. Click "More info" then "Run anyway"
+3. This is normal for downloaded applications
+
+PORTABLE APPLICATION
+====================
+- This is a portable application
+- No installation to system required
+- Can be moved to different folders
+- Data is stored locally in the application folder
+- Can be run from USB drive
+
+SUPPORT
+========
+- Email: support@carrentalpro.com
+- Phone: +213 123 456 789
+- Website: Check the main website for updates
+
+Enjoy using CarRental Pro!
+========================== 

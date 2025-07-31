@@ -415,60 +415,6 @@ class DashboardScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Welcome Section
-              Container(
-                padding: EdgeInsets.all(32.w),
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [Colors.blue.shade50, Colors.blue.shade100],
-                  ),
-                  borderRadius: BorderRadius.circular(16.r),
-                ),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            localizationService
-                                .translate('dashboard.welcome_title'),
-                            style: TextStyle(
-                              fontSize: 32.sp,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.blue.shade800,
-                            ),
-                          ),
-                          SizedBox(height: 8.h),
-                          Text(
-                            localizationService
-                                .translate('dashboard.welcome_subtitle'),
-                            style: TextStyle(
-                              fontSize: 16.sp,
-                              color: Colors.blue.shade600,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      padding: EdgeInsets.all(24.w),
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.8),
-                        borderRadius: BorderRadius.circular(16.r),
-                      ),
-                      child: Icon(
-                        Icons.directions_car,
-                        size: 48.sp,
-                        color: Colors.blue.shade600,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-
-              SizedBox(height: 32.h),
-
               // Quick Overview Section
               Text(
                 localizationService.translate('dashboard.quick_overview'),

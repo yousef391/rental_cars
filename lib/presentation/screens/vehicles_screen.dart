@@ -48,32 +48,10 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Header Section
+              // Add Vehicle Button
               Row(
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          _localizationService.translate('vehicles.title'),
-                          style: TextStyle(
-                            fontSize: 32.sp,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey.shade800,
-                          ),
-                        ),
-                        SizedBox(height: 8.h),
-                        Text(
-                          _localizationService.translate('vehicles.subtitle'),
-                          style: TextStyle(
-                            fontSize: 16.sp,
-                            color: Colors.grey.shade600,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
                   Container(
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
@@ -123,7 +101,7 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
                 ],
               ),
 
-              SizedBox(height: 32.h),
+              SizedBox(height: 24.h),
 
               // Filters Section
               Container(

@@ -54,8 +54,13 @@ class _CustomersScreenState extends State<CustomersScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Header Section
-                _buildHeader(),
+                // Add Customer Button
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    _buildAddButton(),
+                  ],
+                ),
                 SizedBox(height: 24.h),
 
                 // Search Section
@@ -78,65 +83,7 @@ class _CustomersScreenState extends State<CustomersScreen> {
     );
   }
 
-  Widget _buildHeader() {
-    return Container(
-      padding: EdgeInsets.all(24.w),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16.r),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  _localizationService.translate('customers.title'),
-                  style: TextStyle(
-                    fontSize: 28.sp,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.grey.shade800,
-                  ),
-                ),
-                SizedBox(height: 8.h),
-                BlocBuilder<RentalBloc, RentalState>(
-                  builder: (context, rentalState) {
-                    if (rentalState is RentalLoaded) {
-                      return _buildLoyaltySummary(rentalState.rentals);
-                    }
-                    return Text(
-                      _localizationService.translate('customers.subtitle'),
-                      style: TextStyle(
-                        fontSize: 16.sp,
-                        color: Colors.grey.shade600,
-                      ),
-                    );
-                  },
-                ),
-                SizedBox(height: 8.h),
-                Text(
-                  _localizationService.translate('customers.subtitle'),
-                  style: TextStyle(
-                    fontSize: 16.sp,
-                    color: Colors.grey.shade600,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          _buildAddButton(),
-        ],
-      ),
-    );
-  }
+
 
   Widget _buildAddButton() {
     return Container(

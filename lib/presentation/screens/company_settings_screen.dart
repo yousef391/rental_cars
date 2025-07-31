@@ -158,122 +158,13 @@ class _CompanySettingsScreenState extends State<CompanySettingsScreen> {
         },
         child: BlocBuilder<CompanySettingsBloc, CompanySettingsState>(
           builder: (context, state) {
-            return CustomScrollView(
-              slivers: [
-                _buildEnhancedSliverAppBar(),
-                SliverToBoxAdapter(
-                  child: Padding(
-                    padding: EdgeInsets.all(24.w),
-                    child: state is CompanySettingsLoading
-                        ? _buildLoadingState()
-                        : _buildEnhancedSettingsForm(state),
-                  ),
-                ),
-              ],
+            return Padding(
+              padding: EdgeInsets.all(24.w),
+              child: state is CompanySettingsLoading
+                  ? _buildLoadingState()
+                  : _buildEnhancedSettingsForm(state),
             );
           },
-        ),
-      ),
-    );
-  }
-
-  Widget _buildEnhancedSliverAppBar() {
-    return SliverAppBar(
-      expandedHeight: 160.h,
-      floating: false,
-      pinned: true,
-      elevation: 0,
-      backgroundColor: Colors.blue[600],
-      flexibleSpace: FlexibleSpaceBar(
-        title: Text(
-          _localizationService.translate('company_settings.title'),
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 22.sp,
-            fontWeight: FontWeight.bold,
-            shadows: [
-              Shadow(
-                offset: const Offset(0, 1),
-                blurRadius: 3,
-                color: Colors.black.withOpacity(0.3),
-              ),
-            ],
-          ),
-        ),
-        background: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-                Colors.blue[600]!,
-                Colors.indigo[700]!,
-                Colors.blue[800]!,
-              ],
-            ),
-          ),
-          child: Stack(
-            children: [
-              // Background pattern
-              Positioned(
-                top: -50,
-                right: -50,
-                child: Container(
-                  width: 200.w,
-                  height: 200.h,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.white.withOpacity(0.1),
-                  ),
-                ),
-              ),
-              Positioned(
-                bottom: -30,
-                left: -30,
-                child: Container(
-                  width: 150.w,
-                  height: 150.h,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.white.withOpacity(0.05),
-                  ),
-                ),
-              ),
-              // Main content
-              Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      padding: EdgeInsets.all(20.w),
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.2),
-                        borderRadius: BorderRadius.circular(20.r),
-                        border: Border.all(
-                          color: Colors.white.withOpacity(0.3),
-                          width: 1,
-                        ),
-                      ),
-                      child: Icon(
-                        Icons.business,
-                        size: 48.sp,
-                        color: Colors.white,
-                      ),
-                    ),
-                    SizedBox(height: 12.h),
-                    Text(
-                      'Configure Your Company Information',
-                      style: TextStyle(
-                        color: Colors.white.withOpacity(0.9),
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
         ),
       ),
     );
@@ -283,75 +174,6 @@ class _CompanySettingsScreenState extends State<CompanySettingsScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Header Section
-        Container(
-          padding: EdgeInsets.all(24.w),
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Colors.white,
-                Colors.blue.shade50,
-              ],
-            ),
-            borderRadius: BorderRadius.circular(16.r),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.05),
-                blurRadius: 10,
-                offset: const Offset(0, 2),
-              ),
-            ],
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  Container(
-                    padding: EdgeInsets.all(12.w),
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [Colors.blue.shade400, Colors.blue.shade600],
-                      ),
-                      borderRadius: BorderRadius.circular(12.r),
-                    ),
-                    child: Icon(
-                      Icons.settings,
-                      color: Colors.white,
-                      size: 24.sp,
-                    ),
-                  ),
-                  SizedBox(width: 16.w),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Company Information',
-                          style: TextStyle(
-                            fontSize: 20.sp,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey.shade800,
-                          ),
-                        ),
-                        Text(
-                          'This information will be used in your rental contracts',
-                          style: TextStyle(
-                            fontSize: 14.sp,
-                            color: Colors.grey.shade600,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-
-        SizedBox(height: 24.h),
-
         // Company Logo Section
         _buildEnhancedLogoSection(state),
 

@@ -55,32 +55,10 @@ class _RentalsScreenState extends State<RentalsScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Header Section
+              // Add Rental Button
               Row(
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          _localizationService.translate('rentals.title'),
-                          style: TextStyle(
-                            fontSize: 32.sp,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey.shade800,
-                          ),
-                        ),
-                        SizedBox(height: 8.h),
-                        Text(
-                          _localizationService.translate('rentals.subtitle'),
-                          style: TextStyle(
-                            fontSize: 16.sp,
-                            color: Colors.grey.shade600,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
                   Container(
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
@@ -133,7 +111,7 @@ class _RentalsScreenState extends State<RentalsScreen> {
                 ],
               ),
 
-              SizedBox(height: 32.h),
+              SizedBox(height: 24.h),
 
               // Search and Filter Section
               Container(

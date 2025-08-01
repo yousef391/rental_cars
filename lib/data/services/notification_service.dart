@@ -1,9 +1,10 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:rentra/domain/models/vehicle.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz;
-import 'package:offline_rent_car/domain/models/rental.dart';
-import 'package:offline_rent_car/domain/models/vehicle.dart';
-import 'package:offline_rent_car/domain/models/customer.dart';
+import 'package:rentra/domain/models/rental.dart';
+import 'package:rentra/domain/models/vehicle.dart';
+import 'package:rentra/domain/models/customer.dart';
 
 class NotificationService {
   static final NotificationService _instance = NotificationService._internal();

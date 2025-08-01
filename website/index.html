@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Offline Car Rental Management System</title>
+    <title>Rentra - Professional Car Rental Management System</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -14,11 +14,12 @@
         <div class="nav-container">
             <div class="nav-logo">
                 <i class="fas fa-car"></i>
-                <span>CarRental Pro</span>
+                <span>Rentra</span>
             </div>
             <ul class="nav-menu">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#features">Features</a></li>
+                <li><a href="#preview">Preview</a></li>
                 <li><a href="#download">Download</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -34,7 +35,7 @@
     <section id="home" class="hero">
         <div class="hero-container">
             <div class="hero-content">
-                <h1>Professional Car Rental Management System</h1>
+                <h1>Rentra - Professional Car Rental Management System</h1>
                 <p>Complete offline solution for managing your car rental business. Track vehicles, customers, rentals, and generate professional contracts with ease.</p>
                 <div class="hero-buttons">
                     <a href="#download" class="btn btn-primary">
@@ -156,11 +157,356 @@
         </div>
     </section>
 
+    <!-- App Preview Section -->
+    <section id="preview" class="preview">
+        <div class="container">
+            <div class="section-header">
+                <h2>See Rentra in Action</h2>
+                <p>Take a look at the powerful features and beautiful interface of our car rental management system</p>
+            </div>
+            <div class="preview-container">
+                <div class="preview-tabs">
+                    <button class="tab-btn active" data-tab="dashboard">
+                        <i class="fas fa-tachometer-alt"></i>
+                        Dashboard
+                    </button>
+                    <button class="tab-btn" data-tab="vehicles">
+                        <i class="fas fa-car"></i>
+                        Vehicles
+                    </button>
+                    <button class="tab-btn" data-tab="rentals">
+                        <i class="fas fa-calendar-check"></i>
+                        Rentals
+                    </button>
+                    <button class="tab-btn" data-tab="customers">
+                        <i class="fas fa-users"></i>
+                        Customers
+                    </button>
+                    <button class="tab-btn" data-tab="statistics">
+                        <i class="fas fa-chart-bar"></i>
+                        Statistics
+                    </button>
+                </div>
+                <div class="preview-content">
+                    <div class="preview-screen active" id="dashboard">
+                        <div class="screen-container">
+                            <div class="screen-header">
+                                <div class="screen-dots">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <div class="screen-title">Rentra Dashboard</div>
+                            </div>
+                            <div class="screen-body">
+                                <div class="dashboard-preview">
+                                    <div class="preview-sidebar">
+                                        <div class="sidebar-item active">
+                                            <i class="fas fa-home"></i>
+                                            <span>Dashboard</span>
+                                        </div>
+                                        <div class="sidebar-item">
+                                            <i class="fas fa-car"></i>
+                                            <span>Vehicles</span>
+                                        </div>
+                                        <div class="sidebar-item">
+                                            <i class="fas fa-calendar"></i>
+                                            <span>Rentals</span>
+                                        </div>
+                                        <div class="sidebar-item">
+                                            <i class="fas fa-users"></i>
+                                            <span>Customers</span>
+                                        </div>
+                                        <div class="sidebar-item">
+                                            <i class="fas fa-chart-bar"></i>
+                                            <span>Statistics</span>
+                                        </div>
+                                    </div>
+                                    <div class="preview-main">
+                                        <div class="preview-header">
+                                            <h3>Business Overview</h3>
+                                            <div class="status-badge active">Business Active</div>
+                                        </div>
+                                        <div class="preview-stats">
+                                            <div class="preview-stat-card">
+                                                <div class="stat-icon">
+                                                    <i class="fas fa-dollar-sign"></i>
+                                                </div>
+                                                <div class="stat-content">
+                                                    <h4>Total Revenue</h4>
+                                                    <p class="stat-value">$24,580</p>
+                                                    <p class="stat-trend positive">+12.5%</p>
+                                                </div>
+                                            </div>
+                                            <div class="preview-stat-card">
+                                                <div class="stat-icon">
+                                                    <i class="fas fa-car"></i>
+                                                </div>
+                                                <div class="stat-content">
+                                                    <h4>Available Vehicles</h4>
+                                                    <p class="stat-value">18</p>
+                                                    <p class="stat-trend">75%</p>
+                                                </div>
+                                            </div>
+                                            <div class="preview-stat-card">
+                                                <div class="stat-icon">
+                                                    <i class="fas fa-calendar-check"></i>
+                                                </div>
+                                                <div class="stat-content">
+                                                    <h4>Active Rentals</h4>
+                                                    <p class="stat-value">6</p>
+                                                    <p class="stat-trend">25%</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="preview-screen" id="vehicles">
+                        <div class="screen-container">
+                            <div class="screen-header">
+                                <div class="screen-dots">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <div class="screen-title">Vehicle Management</div>
+                            </div>
+                            <div class="screen-body">
+                                <div class="vehicles-preview">
+                                    <div class="preview-toolbar">
+                                        <button class="preview-btn primary">
+                                            <i class="fas fa-plus"></i>
+                                            Add Vehicle
+                                        </button>
+                                        <div class="preview-search">
+                                            <i class="fas fa-search"></i>
+                                            <input type="text" placeholder="Search vehicles..." disabled>
+                                        </div>
+                                    </div>
+                                    <div class="preview-table">
+                                        <div class="table-header">
+                                            <div class="table-cell">Vehicle</div>
+                                            <div class="table-cell">Status</div>
+                                            <div class="table-cell">Daily Rate</div>
+                                            <div class="table-cell">Actions</div>
+                                        </div>
+                                        <div class="table-row">
+                                            <div class="table-cell">
+                                                <div class="vehicle-info">
+                                                    <strong>Toyota Camry 2023</strong>
+                                                    <span>ABC-123</span>
+                                                </div>
+                                            </div>
+                                            <div class="table-cell">
+                                                <span class="status available">Available</span>
+                                            </div>
+                                            <div class="table-cell">$45/day</div>
+                                            <div class="table-cell">
+                                                <button class="action-btn"><i class="fas fa-edit"></i></button>
+                                                <button class="action-btn"><i class="fas fa-trash"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="table-row">
+                                            <div class="table-cell">
+                                                <div class="vehicle-info">
+                                                    <strong>Honda Civic 2022</strong>
+                                                    <span>XYZ-789</span>
+                                                </div>
+                                            </div>
+                                            <div class="table-cell">
+                                                <span class="status rented">Rented</span>
+                                            </div>
+                                            <div class="table-cell">$40/day</div>
+                                            <div class="table-cell">
+                                                <button class="action-btn"><i class="fas fa-edit"></i></button>
+                                                <button class="action-btn"><i class="fas fa-trash"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="preview-screen" id="rentals">
+                        <div class="screen-container">
+                            <div class="screen-header">
+                                <div class="screen-dots">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <div class="screen-title">Rental Management</div>
+                            </div>
+                            <div class="screen-body">
+                                <div class="rentals-preview">
+                                    <div class="preview-toolbar">
+                                        <button class="preview-btn primary">
+                                            <i class="fas fa-plus"></i>
+                                            New Rental
+                                        </button>
+                                        <div class="preview-filters">
+                                            <select disabled>
+                                                <option>All Status</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="preview-table">
+                                        <div class="table-header">
+                                            <div class="table-cell">Customer</div>
+                                            <div class="table-cell">Vehicle</div>
+                                            <div class="table-cell">Duration</div>
+                                            <div class="table-cell">Total</div>
+                                            <div class="table-cell">Status</div>
+                                        </div>
+                                        <div class="table-row">
+                                            <div class="table-cell">John Doe</div>
+                                            <div class="table-cell">Toyota Camry</div>
+                                            <div class="table-cell">3 days</div>
+                                            <div class="table-cell">$135</div>
+                                            <div class="table-cell">
+                                                <span class="status active">Active</span>
+                                            </div>
+                                        </div>
+                                        <div class="table-row">
+                                            <div class="table-cell">Jane Smith</div>
+                                            <div class="table-cell">Honda Civic</div>
+                                            <div class="table-cell">1 week</div>
+                                            <div class="table-cell">$280</div>
+                                            <div class="table-cell">
+                                                <span class="status completed">Completed</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="preview-screen" id="customers">
+                        <div class="screen-container">
+                            <div class="screen-header">
+                                <div class="screen-dots">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <div class="screen-title">Customer Management</div>
+                            </div>
+                            <div class="screen-body">
+                                <div class="customers-preview">
+                                    <div class="preview-toolbar">
+                                        <button class="preview-btn primary">
+                                            <i class="fas fa-plus"></i>
+                                            Add Customer
+                                        </button>
+                                        <div class="preview-search">
+                                            <i class="fas fa-search"></i>
+                                            <input type="text" placeholder="Search customers..." disabled>
+                                        </div>
+                                    </div>
+                                    <div class="preview-table">
+                                        <div class="table-header">
+                                            <div class="table-cell">Customer</div>
+                                            <div class="table-cell">Phone</div>
+                                            <div class="table-cell">Rentals</div>
+                                            <div class="table-cell">Loyalty</div>
+                                            <div class="table-cell">Actions</div>
+                                        </div>
+                                        <div class="table-row">
+                                            <div class="table-cell">
+                                                <div class="customer-info">
+                                                    <strong>John Doe</strong>
+                                                    <span>john@email.com</span>
+                                                </div>
+                                            </div>
+                                            <div class="table-cell">+1 234-567-8900</div>
+                                            <div class="table-cell">12</div>
+                                            <div class="table-cell">
+                                                <span class="loyalty gold">⭐ Gold</span>
+                                            </div>
+                                            <div class="table-cell">
+                                                <button class="action-btn"><i class="fas fa-edit"></i></button>
+                                                <button class="action-btn"><i class="fas fa-trash"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="table-row">
+                                            <div class="table-cell">
+                                                <div class="customer-info">
+                                                    <strong>Jane Smith</strong>
+                                                    <span>jane@email.com</span>
+                                                </div>
+                                            </div>
+                                            <div class="table-cell">+1 234-567-8901</div>
+                                            <div class="table-cell">8</div>
+                                            <div class="table-cell">
+                                                <span class="loyalty blue">⭐ Blue</span>
+                                            </div>
+                                            <div class="table-cell">
+                                                <button class="action-btn"><i class="fas fa-edit"></i></button>
+                                                <button class="action-btn"><i class="fas fa-trash"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="preview-screen" id="statistics">
+                        <div class="screen-container">
+                            <div class="screen-header">
+                                <div class="screen-dots">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <div class="screen-title">Analytics Dashboard</div>
+                            </div>
+                            <div class="screen-body">
+                                <div class="statistics-preview">
+                                    <div class="preview-header">
+                                        <h3>Business Analytics</h3>
+                                        <select disabled>
+                                            <option>This Month</option>
+                                        </select>
+                                    </div>
+                                    <div class="preview-charts">
+                                        <div class="chart-container">
+                                            <h4>Revenue Trend</h4>
+                                            <div class="chart-placeholder">
+                                                <div class="chart-bar" style="height: 60%"></div>
+                                                <div class="chart-bar" style="height: 80%"></div>
+                                                <div class="chart-bar" style="height: 45%"></div>
+                                                <div class="chart-bar" style="height: 90%"></div>
+                                                <div class="chart-bar" style="height: 70%"></div>
+                                                <div class="chart-bar" style="height: 85%"></div>
+                                                <div class="chart-bar" style="height: 95%"></div>
+                                            </div>
+                                        </div>
+                                        <div class="chart-container">
+                                            <h4>Vehicle Performance</h4>
+                                            <div class="chart-placeholder pie">
+                                                <div class="pie-segment" style="--angle: 60deg"></div>
+                                                <div class="pie-segment" style="--angle: 30deg"></div>
+                                                <div class="pie-segment" style="--angle: 10deg"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Download Section -->
     <section id="download" class="download">
         <div class="container">
             <div class="section-header">
-                <h2>Download CarRental Pro</h2>
+                <h2>Download Rentra</h2>
                 <p>Get started with your car rental business today</p>
             </div>
             <div class="download-options">
@@ -177,10 +523,10 @@
                         <li><i class="fas fa-check"></i> Run from any folder</li>
                         <li><i class="fas fa-check"></i> USB drive compatible</li>
                     </ul>
-                                               <a href="download.html" class="btn btn-primary download-btn">
-                               <i class="fas fa-download"></i>
-                               Download Portable
-                           </a>
+                    <a href="downloads/Rentra-Windows.zip" class="btn btn-primary download-btn">
+                        <i class="fas fa-download"></i>
+                        Download Rentra
+                    </a>
                     <small>Version 1.0.0 | 16 MB</small>
                 </div>
 
@@ -196,7 +542,7 @@
                         <li><i class="fas fa-check"></i> API documentation</li>
                         <li><i class="fas fa-check"></i> Troubleshooting</li>
                     </ul>
-                    <a href="downloads/CarRentalPro-Docs.pdf" class="btn btn-secondary download-btn">
+                    <a href="downloads/Rentra-Docs.pdf" class="btn btn-secondary download-btn">
                         <i class="fas fa-file-pdf"></i>
                         Download Documentation
                     </a>

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:offline_rent_car/data/services/localization_service.dart';
+import 'package:rentra/data/services/localization_service.dart';
 
 class LanguageSelector extends StatefulWidget {
   final VoidCallback? onLanguageChanged;

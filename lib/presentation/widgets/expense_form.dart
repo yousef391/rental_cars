@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:offline_rent_car/presentation/blocs/expense_bloc.dart';
-import 'package:offline_rent_car/domain/models/expense.dart';
-import 'package:offline_rent_car/data/services/localization_service.dart';
+import 'package:rentra/presentation/blocs/expense_bloc.dart';
+import 'package:rentra/domain/models/expense.dart';
+import 'package:rentra/data/services/localization_service.dart';
 
 class ExpenseForm extends StatefulWidget {
   final Expense? expense;

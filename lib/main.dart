@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:offline_rent_car/presentation/screens/home_screen.dart';
-import 'package:offline_rent_car/presentation/blocs/vehicle_bloc.dart';
-import 'package:offline_rent_car/presentation/blocs/customer_bloc.dart';
-import 'package:offline_rent_car/presentation/blocs/rental_bloc.dart';
-import 'package:offline_rent_car/presentation/blocs/expense_bloc.dart';
-import 'package:offline_rent_car/presentation/blocs/company_settings_bloc.dart';
-import 'package:offline_rent_car/data/repositories/vehicle_repository.dart';
-import 'package:offline_rent_car/data/repositories/customer_repository.dart';
-import 'package:offline_rent_car/data/repositories/rental_repository.dart';
-import 'package:offline_rent_car/data/repositories/expense_repository.dart';
-import 'package:offline_rent_car/data/repositories/company_settings_repository.dart';
-import 'package:offline_rent_car/data/services/localization_service.dart';
-import 'package:offline_rent_car/data/services/notification_service.dart';
-import 'package:offline_rent_car/data/services/storage_service.dart';
+import 'package:rentra/presentation/screens/home_screen.dart';
+import 'package:rentra/presentation/blocs/vehicle_bloc.dart';
+import 'package:rentra/presentation/blocs/customer_bloc.dart';
+import 'package:rentra/presentation/blocs/rental_bloc.dart';
+import 'package:rentra/presentation/blocs/expense_bloc.dart';
+import 'package:rentra/presentation/blocs/company_settings_bloc.dart';
+import 'package:rentra/data/repositories/vehicle_repository.dart';
+import 'package:rentra/data/repositories/customer_repository.dart';
+import 'package:rentra/data/repositories/rental_repository.dart';
+import 'package:rentra/data/repositories/expense_repository.dart';
+import 'package:rentra/data/repositories/company_settings_repository.dart';
+import 'package:rentra/data/services/localization_service.dart';
+import 'package:rentra/data/services/notification_service.dart';
+import 'package:rentra/data/services/storage_service.dart';
 import 'package:path_provider/path_provider.dart';
 
 void main() async {

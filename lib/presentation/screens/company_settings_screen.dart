@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:offline_rent_car/data/services/localization_service.dart';
-import 'package:offline_rent_car/data/services/image_service.dart';
-import 'package:offline_rent_car/domain/models/company_settings.dart';
-import 'package:offline_rent_car/presentation/blocs/company_settings_bloc.dart';
-import 'package:offline_rent_car/presentation/widgets/image_picker_widget.dart';
+import 'package:rentra/data/services/localization_service.dart';
+import 'package:rentra/data/services/image_service.dart';
+import 'package:rentra/domain/models/company_settings.dart';
+import 'package:rentra/presentation/blocs/company_settings_bloc.dart';
+import 'package:rentra/presentation/widgets/image_picker_widget.dart';
 
 class CompanySettingsScreen extends StatefulWidget {
   const CompanySettingsScreen({super.key});
@@ -158,11 +158,16 @@ class _CompanySettingsScreenState extends State<CompanySettingsScreen> {
         },
         child: BlocBuilder<CompanySettingsBloc, CompanySettingsState>(
           builder: (context, state) {
-            return Padding(
+            return SingleChildScrollView(
               padding: EdgeInsets.all(24.w),
-              child: state is CompanySettingsLoading
-                  ? _buildLoadingState()
-                  : _buildEnhancedSettingsForm(state),
+              child: ConstrainedBox(
+                constraints: BoxConstraints(
+                  minHeight: 1.sh - 100.h, // Account for header
+                ),
+                child: state is CompanySettingsLoading
+                    ? _buildLoadingState()
+                    : _buildEnhancedSettingsForm(state),
+              ),
             );
           },
         ),
@@ -186,6 +191,9 @@ class _CompanySettingsScreenState extends State<CompanySettingsScreen> {
 
         // Action Buttons
         _buildEnhancedActionButtons(state),
+
+        // Add bottom padding for better spacing
+        SizedBox(height: 24.h),
       ],
     );
   }
@@ -228,7 +236,7 @@ class _CompanySettingsScreenState extends State<CompanySettingsScreen> {
               ),
               SizedBox(width: 12.w),
               Text(
-                'Company Logo',
+                _localizationService.translate('company_settings.company_logo'),
                 style: TextStyle(
                   fontSize: 18.sp,
                   fontWeight: FontWeight.bold,
@@ -269,42 +277,95 @@ class _CompanySettingsScreenState extends State<CompanySettingsScreen> {
 
           SizedBox(height: 20.h),
 
-          // Logo Actions
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ElevatedButton.icon(
-                onPressed: _uploadLogo,
-                icon: Icon(Icons.upload, size: 18.sp),
-                label: const Text('Upload Logo'),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue.shade600,
-                  foregroundColor: Colors.white,
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8.r),
-                  ),
-                ),
-              ),
-              if (logoPath != null) ...[
-                SizedBox(width: 12.w),
-                OutlinedButton.icon(
-                  onPressed: _removeLogo,
-                  icon: Icon(Icons.delete, size: 18.sp),
-                  label: const Text('Remove'),
-                  style: OutlinedButton.styleFrom(
-                    foregroundColor: Colors.red.shade600,
-                    side: BorderSide(color: Colors.red.shade300),
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.r),
+          // Logo Actions - Responsive layout
+          LayoutBuilder(
+            builder: (context, constraints) {
+              final isSmallScreen = constraints.maxWidth < 600.w;
+
+              if (isSmallScreen) {
+                // Stack buttons vertically on small screens
+                return Column(
+                  children: [
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton.icon(
+                        onPressed: _uploadLogo,
+                        icon: Icon(Icons.upload, size: 18.sp),
+                        label: Text(_localizationService
+                            .translate('company_settings.upload_logo')),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.blue.shade600,
+                          foregroundColor: Colors.white,
+                          padding: EdgeInsets.symmetric(vertical: 12.h),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8.r),
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-              ],
-            ],
+                    if (logoPath != null) ...[
+                      SizedBox(height: 12.h),
+                      SizedBox(
+                        width: double.infinity,
+                        child: OutlinedButton.icon(
+                          onPressed: _removeLogo,
+                          icon: Icon(Icons.delete, size: 18.sp),
+                          label: Text(_localizationService
+                              .translate('company_settings.remove_logo')),
+                          style: OutlinedButton.styleFrom(
+                            foregroundColor: Colors.red.shade600,
+                            side: BorderSide(color: Colors.red.shade300),
+                            padding: EdgeInsets.symmetric(vertical: 12.h),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8.r),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ],
+                );
+              } else {
+                // Side by side on larger screens
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton.icon(
+                      onPressed: _uploadLogo,
+                      icon: Icon(Icons.upload, size: 18.sp),
+                      label: const Text('Upload Logo'),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blue.shade600,
+                        foregroundColor: Colors.white,
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 20.w, vertical: 12.h),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8.r),
+                        ),
+                      ),
+                    ),
+                    if (logoPath != null) ...[
+                      SizedBox(width: 12.w),
+                      OutlinedButton.icon(
+                        onPressed: _removeLogo,
+                        icon: Icon(Icons.delete, size: 18.sp),
+                        label: Text(_localizationService
+                            .translate('company_settings.remove_logo')),
+                        style: OutlinedButton.styleFrom(
+                          foregroundColor: Colors.red.shade600,
+                          side: BorderSide(color: Colors.red.shade300),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 20.w, vertical: 12.h),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8.r),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ],
+                );
+              }
+            },
           ),
         ],
       ),
@@ -322,7 +383,7 @@ class _CompanySettingsScreenState extends State<CompanySettingsScreen> {
         ),
         SizedBox(height: 8.h),
         Text(
-          'No Logo',
+          _localizationService.translate('company_settings.no_logo'),
           style: TextStyle(
             fontSize: 12.sp,
             color: Colors.grey.shade500,
@@ -367,7 +428,8 @@ class _CompanySettingsScreenState extends State<CompanySettingsScreen> {
                 ),
                 SizedBox(width: 12.w),
                 Text(
-                  'Company Details',
+                  _localizationService
+                      .translate('company_settings.company_details'),
                   style: TextStyle(
                     fontSize: 18.sp,
                     fontWeight: FontWeight.bold,
@@ -381,12 +443,15 @@ class _CompanySettingsScreenState extends State<CompanySettingsScreen> {
             // Company Name
             _buildEnhancedTextField(
               controller: _companyNameController,
-              label: 'Company Name',
-              hint: 'Enter your company name',
+              label: _localizationService
+                  .translate('company_settings.company_name'),
+              hint: _localizationService
+                  .translate('company_settings.company_name_hint'),
               icon: Icons.business,
               validator: (value) {
                 if (value == null || value.trim().isEmpty) {
-                  return 'Company name is required';
+                  return _localizationService
+                      .translate('validation.required_field');
                 }
                 return null;
               },
@@ -397,13 +462,16 @@ class _CompanySettingsScreenState extends State<CompanySettingsScreen> {
             // Company Address
             _buildEnhancedTextField(
               controller: _companyAddressController,
-              label: 'Company Address',
-              hint: 'Enter your company address',
+              label: _localizationService
+                  .translate('company_settings.company_address'),
+              hint: _localizationService
+                  .translate('company_settings.company_address_hint'),
               icon: Icons.location_on,
               maxLines: 3,
               validator: (value) {
                 if (value == null || value.trim().isEmpty) {
-                  return 'Company address is required';
+                  return _localizationService
+                      .translate('validation.required_field');
                 }
                 return null;
               },
@@ -414,13 +482,16 @@ class _CompanySettingsScreenState extends State<CompanySettingsScreen> {
             // Company Phone
             _buildEnhancedTextField(
               controller: _companyPhoneController,
-              label: 'Company Phone',
-              hint: 'Enter your company phone number',
+              label: _localizationService
+                  .translate('company_settings.company_phone'),
+              hint: _localizationService
+                  .translate('company_settings.company_phone_hint'),
               icon: Icons.phone,
               keyboardType: TextInputType.phone,
               validator: (value) {
                 if (value == null || value.trim().isEmpty) {
-                  return 'Company phone is required';
+                  return _localizationService
+                      .translate('validation.required_field');
                 }
                 return null;
               },
@@ -493,73 +564,160 @@ class _CompanySettingsScreenState extends State<CompanySettingsScreen> {
   }
 
   Widget _buildEnhancedActionButtons(CompanySettingsState state) {
-    return Column(
-      children: [
-        Row(
-          children: [
-            Expanded(
-              child: ElevatedButton.icon(
-                onPressed:
-                    state is CompanySettingsSaving ? null : _saveSettings,
-                icon: state is CompanySettingsSaving
-                    ? SizedBox(
-                        width: 20.sp,
-                        height: 20.sp,
-                        child: const CircularProgressIndicator(
-                          strokeWidth: 2,
-                          valueColor:
-                              AlwaysStoppedAnimation<Color>(Colors.white),
-                        ),
-                      )
-                    : Icon(Icons.save, size: 20.sp),
-                label: Text(
-                  state is CompanySettingsSaving
-                      ? 'Saving...'
-                      : 'Save Settings',
-                ),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue.shade600,
-                  foregroundColor: Colors.white,
-                  padding: EdgeInsets.symmetric(vertical: 16.h),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12.r),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final isSmallScreen = constraints.maxWidth < 600.w;
+
+        if (isSmallScreen) {
+          // Stack buttons vertically on small screens
+          return Column(
+            children: [
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton.icon(
+                  onPressed:
+                      state is CompanySettingsSaving ? null : _saveSettings,
+                  icon: state is CompanySettingsSaving
+                      ? SizedBox(
+                          width: 20.sp,
+                          height: 20.sp,
+                          child: const CircularProgressIndicator(
+                            strokeWidth: 2,
+                            valueColor:
+                                AlwaysStoppedAnimation<Color>(Colors.white),
+                          ),
+                        )
+                      : Icon(Icons.save, size: 20.sp),
+                  label: Text(
+                    state is CompanySettingsSaving
+                        ? _localizationService.translate('common.saving')
+                        : _localizationService
+                            .translate('company_settings.save_settings'),
                   ),
-                  elevation: 2,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue.shade600,
+                    foregroundColor: Colors.white,
+                    padding: EdgeInsets.symmetric(vertical: 16.h),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12.r),
+                    ),
+                    elevation: 2,
+                  ),
                 ),
               ),
-            ),
-            SizedBox(width: 16.w),
-            OutlinedButton.icon(
-              onPressed: _resetToDefaults,
-              icon: Icon(Icons.refresh, size: 20.sp),
-              label: const Text('Reset to Defaults'),
-              style: OutlinedButton.styleFrom(
-                foregroundColor: Colors.orange.shade600,
-                side: BorderSide(color: Colors.orange.shade300),
-                padding: EdgeInsets.symmetric(vertical: 16.h),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12.r),
+              SizedBox(height: 12.h),
+              SizedBox(
+                width: double.infinity,
+                child: OutlinedButton.icon(
+                  onPressed: _resetToDefaults,
+                  icon: Icon(Icons.refresh, size: 20.sp),
+                  label: Text(_localizationService
+                      .translate('company_settings.reset_to_defaults')),
+                  style: OutlinedButton.styleFrom(
+                    foregroundColor: Colors.orange.shade600,
+                    side: BorderSide(color: Colors.orange.shade300),
+                    padding: EdgeInsets.symmetric(vertical: 16.h),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12.r),
+                    ),
+                  ),
                 ),
               ),
-            ),
-          ],
-        ),
-        SizedBox(height: 16.h),
-        // Test button for debugging
-        OutlinedButton.icon(
-          onPressed: _testCompanySettings,
-          icon: Icon(Icons.bug_report, size: 20.sp),
-          label: const Text('Test Company Settings'),
-          style: OutlinedButton.styleFrom(
-            foregroundColor: Colors.purple.shade600,
-            side: BorderSide(color: Colors.purple.shade300),
-            padding: EdgeInsets.symmetric(vertical: 12.h),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12.r),
-            ),
-          ),
-        ),
-      ],
+              SizedBox(height: 12.h),
+              SizedBox(
+                width: double.infinity,
+                child: OutlinedButton.icon(
+                  onPressed: _testCompanySettings,
+                  icon: Icon(Icons.bug_report, size: 20.sp),
+                  label: Text(_localizationService
+                      .translate('company_settings.test_company_settings')),
+                  style: OutlinedButton.styleFrom(
+                    foregroundColor: Colors.purple.shade600,
+                    side: BorderSide(color: Colors.purple.shade300),
+                    padding: EdgeInsets.symmetric(vertical: 12.h),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12.r),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          );
+        } else {
+          // Side by side on larger screens
+          return Column(
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                    child: ElevatedButton.icon(
+                      onPressed:
+                          state is CompanySettingsSaving ? null : _saveSettings,
+                      icon: state is CompanySettingsSaving
+                          ? SizedBox(
+                              width: 20.sp,
+                              height: 20.sp,
+                              child: const CircularProgressIndicator(
+                                strokeWidth: 2,
+                                valueColor:
+                                    AlwaysStoppedAnimation<Color>(Colors.white),
+                              ),
+                            )
+                          : Icon(Icons.save, size: 20.sp),
+                      label: Text(
+                        state is CompanySettingsSaving
+                            ? 'Saving...'
+                            : 'Save Settings',
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blue.shade600,
+                        foregroundColor: Colors.white,
+                        padding: EdgeInsets.symmetric(vertical: 16.h),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12.r),
+                        ),
+                        elevation: 2,
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 16.w),
+                  OutlinedButton.icon(
+                    onPressed: _resetToDefaults,
+                    icon: Icon(Icons.refresh, size: 20.sp),
+                    label: const Text('Reset to Defaults'),
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: Colors.orange.shade600,
+                      side: BorderSide(color: Colors.orange.shade300),
+                      padding: EdgeInsets.symmetric(vertical: 16.h),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12.r),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 16.h),
+              SizedBox(
+                width: double.infinity,
+                child: OutlinedButton.icon(
+                  onPressed: _testCompanySettings,
+                  icon: Icon(Icons.bug_report, size: 20.sp),
+                  label: Text(_localizationService
+                      .translate('company_settings.test_company_settings')),
+                  style: OutlinedButton.styleFrom(
+                    foregroundColor: Colors.purple.shade600,
+                    side: BorderSide(color: Colors.purple.shade300),
+                    padding: EdgeInsets.symmetric(vertical: 12.h),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12.r),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          );
+        }
+      },
     );
   }
 
@@ -593,10 +751,11 @@ class _CompanySettingsScreenState extends State<CompanySettingsScreen> {
         children: [
           CircularProgressIndicator(
             valueColor: AlwaysStoppedAnimation<Color>(Colors.blue.shade600),
+            strokeWidth: 3.w,
           ),
           SizedBox(height: 16.h),
           Text(
-            'Loading company settings...',
+            _localizationService.translate('company_settings.loading_settings'),
             style: TextStyle(
               fontSize: 16.sp,
               color: Colors.grey.shade600,

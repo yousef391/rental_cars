@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:offline_rent_car/domain/models/company_settings.dart';
-import 'package:offline_rent_car/data/repositories/company_settings_repository.dart';
+import 'package:rentra/domain/models/company_settings.dart';
+import 'package:rentra/data/repositories/company_settings_repository.dart';
 
 // Events
 abstract class CompanySettingsEvent {}

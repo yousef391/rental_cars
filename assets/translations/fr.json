@@ -296,7 +296,10 @@
     "security_deposit_note": "Note : Le dépôt de garantie sera remboursé lors du retour du véhicule",
     "payment_successful": "Paiement enregistré avec succès",
     "invalid_amount": "Veuillez entrer un montant de paiement valide",
-    "amount_exceeds_balance": "Le montant du paiement dépasse le solde restant"
+    "amount_exceeds_balance": "Le montant du paiement dépasse le solde restant",
+    "paid": "Payé",
+    "pending": "En attente",
+    "overdue": "En retard"
   },
   
   "completion": {
@@ -451,6 +454,65 @@
     "logo_hint": "Téléchargez le logo de votre entreprise pour les contrats",
     "logo_uploaded": "Logo téléchargé avec succès",
     "logo_removed": "Logo supprimé avec succès",
-    "logo_error": "Erreur lors du téléchargement du logo"
+    "logo_error": "Erreur lors du téléchargement du logo",
+    "company_details": "Détails de l'Entreprise",
+    "no_logo": "Aucun Logo",
+    "test_company_settings": "Tester les Paramètres de l'Entreprise"
+  },
+
+  "notifications": {
+    "title": "Notifications",
+    "subtitle": "Gérer les notifications et alertes",
+    "refresh": "Actualiser",
+    "settings": "Paramètres",
+    "clear_all": "Tout effacer",
+    "loading_notifications": "Chargement des notifications...",
+    "no_scheduled_notifications": "Aucune notification programmée",
+    "no_notifications_message": "Toutes les notifications apparaîtront ici lorsqu'elles seront programmées",
+    "notification_details": "Détails de la notification",
+    "scheduled": "Programmé",
+    "view_details": "Voir les détails",
+    "cancel_notification": "Annuler",
+    "clear_all_notifications": "Effacer toutes les notifications",
+    "clear_all_confirm": "Êtes-vous sûr de vouloir annuler toutes les notifications programmées ?",
+    "notification_cancelled": "Notification annulée avec succès",
+    "notification_cancelled_error": "Échec de l'annulation de la notification",
+    "all_notifications_cleared": "Toutes les notifications effacées avec succès",
+    "clear_notifications_error": "Échec de l'effacement des notifications",
+    "notification_types": {
+      "rental": "Location",
+      "maintenance": "Maintenance",
+      "license": "Licence",
+      "insurance": "Assurance",
+      "general": "Général"
+    }
+  },
+
+  "dashboard": {
+    "title": "Tableau de bord",
+    "welcome_title": "Bienvenue dans le Gestionnaire de Location de Voitures",
+    "welcome_subtitle": "Gérez votre flotte, vos clients et vos locations facilement",
+    "manage_business": "Gérez votre entreprise",
+    "quick_overview": "Aperçu rapide",
+    "quick_actions": "Actions rapides",
+    "total_vehicles": "Total des véhicules",
+    "active_rentals": "Locations actives",
+    "available_vehicles": "Véhicules disponibles",
+    "total_revenue": "Revenus totaux",
+    "add_new_rental": "Ajouter une nouvelle location",
+    "create_new_rental": "Créer un nouveau contrat de location",
+    "add_vehicle": "Ajouter un véhicule",
+    "register_new_vehicle": "Enregistrer un nouveau véhicule",
+    "add_customer": "Ajouter un client",
+    "register_new_customer": "Enregistrer un nouveau client",
+    "view_statistics": "Voir les statistiques",
+    "check_business_metrics": "Vérifiez vos métriques d'entreprise",
+    "business_active": "Entreprise active",
+    "recent_activity": "Activité récente",
+    "last_7_days": "7 derniers jours",
+    "available": "Disponible",
+    "completed": "Terminé",
+    "in_maintenance": "En maintenance",
+    "this_month": "Ce mois"
   }
 } 

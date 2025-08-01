@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:offline_rent_car/data/services/image_service.dart';
-import 'package:offline_rent_car/data/services/localization_service.dart';
+import 'package:rentra/data/services/image_service.dart';
+import 'package:rentra/data/services/localization_service.dart';
 
 class ImagePickerWidget extends StatefulWidget {
   final String? currentImagePath;

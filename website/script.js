@@ -172,6 +172,24 @@ function showNotification(message, type = 'info') {
     }, 5000);
 }
 
+// Preview tabs functionality
+const tabButtons = document.querySelectorAll('.tab-btn');
+const previewScreens = document.querySelectorAll('.preview-screen');
+
+tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const targetTab = button.getAttribute('data-tab');
+        
+        // Remove active class from all buttons and screens
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        previewScreens.forEach(screen => screen.classList.remove('active'));
+        
+        // Add active class to clicked button and target screen
+        button.classList.add('active');
+        document.getElementById(targetTab).classList.add('active');
+    });
+});
+
 // Counter animation for statistics
 function animateCounter(element, target, duration = 2000) {
     let start = 0;

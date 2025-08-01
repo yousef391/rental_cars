@@ -296,7 +296,10 @@
     "security_deposit_note": "Note: Security deposit will be returned upon vehicle return",
     "payment_successful": "Payment recorded successfully",
     "invalid_amount": "Please enter a valid payment amount",
-    "amount_exceeds_balance": "Payment amount exceeds remaining balance"
+    "amount_exceeds_balance": "Payment amount exceeds remaining balance",
+    "paid": "Paid",
+    "pending": "Pending",
+    "overdue": "Overdue"
   },
   
   "completion": {
@@ -451,6 +454,65 @@
     "logo_hint": "Upload your company logo for contracts",
     "logo_uploaded": "Logo uploaded successfully",
     "logo_removed": "Logo removed successfully",
-    "logo_error": "Error uploading logo"
+    "logo_error": "Error uploading logo",
+    "company_details": "Company Details",
+    "no_logo": "No Logo",
+    "test_company_settings": "Test Company Settings"
+  },
+
+  "notifications": {
+    "title": "Notifications",
+    "subtitle": "Manage notifications and alerts",
+    "refresh": "Refresh",
+    "settings": "Settings",
+    "clear_all": "Clear All",
+    "loading_notifications": "Loading notifications...",
+    "no_scheduled_notifications": "No Scheduled Notifications",
+    "no_notifications_message": "All notifications will appear here when scheduled",
+    "notification_details": "Notification Details",
+    "scheduled": "Scheduled",
+    "view_details": "View Details",
+    "cancel_notification": "Cancel",
+    "clear_all_notifications": "Clear All Notifications",
+    "clear_all_confirm": "Are you sure you want to cancel all scheduled notifications?",
+    "notification_cancelled": "Notification cancelled successfully",
+    "notification_cancelled_error": "Failed to cancel notification",
+    "all_notifications_cleared": "All notifications cleared successfully",
+    "clear_notifications_error": "Failed to clear notifications",
+    "notification_types": {
+      "rental": "Rental",
+      "maintenance": "Maintenance",
+      "license": "License",
+      "insurance": "Insurance",
+      "general": "General"
+    }
+  },
+
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome_title": "Welcome to Car Rental Manager",
+    "welcome_subtitle": "Manage your fleet, customers, and rentals with ease",
+    "manage_business": "Manage your business",
+    "quick_overview": "Quick Overview",
+    "quick_actions": "Quick Actions",
+    "total_vehicles": "Total Vehicles",
+    "active_rentals": "Active Rentals",
+    "available_vehicles": "Available Vehicles",
+    "total_revenue": "Total Revenue",
+    "add_new_rental": "Add New Rental",
+    "create_new_rental": "Create a new rental agreement",
+    "add_vehicle": "Add Vehicle",
+    "register_new_vehicle": "Register a new vehicle",
+    "add_customer": "Add Customer",
+    "register_new_customer": "Register a new customer",
+    "view_statistics": "View Statistics",
+    "check_business_metrics": "Check your business metrics",
+    "business_active": "Business Active",
+    "recent_activity": "Recent Activity",
+    "last_7_days": "Last 7 Days",
+    "available": "Available",
+    "completed": "Completed",
+    "in_maintenance": "In Maintenance",
+    "this_month": "This Month"
   }
 } 

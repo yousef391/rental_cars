@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:offline_rent_car/presentation/blocs/rental_bloc.dart';
-import 'package:offline_rent_car/presentation/blocs/expense_bloc.dart';
-import 'package:offline_rent_car/domain/models/rental.dart';
-import 'package:offline_rent_car/domain/models/expense.dart';
-import 'package:offline_rent_car/presentation/widgets/expense_form.dart';
-import 'package:offline_rent_car/data/services/localization_service.dart';
+import 'package:rentra/presentation/blocs/rental_bloc.dart';
+import 'package:rentra/presentation/blocs/expense_bloc.dart';
+import 'package:rentra/domain/models/rental.dart';
+import 'package:rentra/domain/models/expense.dart';
+import 'package:rentra/presentation/widgets/expense_form.dart';
+import 'package:rentra/data/services/localization_service.dart';
 import 'package:intl/intl.dart';
 import 'dart:math' as math;
 
@@ -272,7 +272,7 @@ class _StatisticsScreenState extends State<StatisticsScreen>
       children: [
         Expanded(
           child: _buildMetricCard(
-            'Total Revenue',
+            _localizationService.translate('statistics.total_revenue'),
             totalRevenue,
             Icons.trending_up,
             Colors.green,
@@ -282,7 +282,7 @@ class _StatisticsScreenState extends State<StatisticsScreen>
         SizedBox(width: 16.w),
         Expanded(
           child: _buildMetricCard(
-            'Total Expenses',
+            _localizationService.translate('statistics.total_expenses'),
             totalExpenses,
             Icons.trending_down,
             Colors.red,
@@ -292,7 +292,7 @@ class _StatisticsScreenState extends State<StatisticsScreen>
         SizedBox(width: 16.w),
         Expanded(
           child: _buildMetricCard(
-            'Net Profit',
+            _localizationService.translate('statistics.net_profit'),
             netProfit,
             Icons.account_balance_wallet,
             netProfit >= 0 ? Colors.blue : Colors.orange,
@@ -302,7 +302,7 @@ class _StatisticsScreenState extends State<StatisticsScreen>
         SizedBox(width: 16.w),
         Expanded(
           child: _buildMetricCard(
-            'Active Rentals',
+            _localizationService.translate('statistics.active_rentals'),
             activeRentals.toDouble(),
             Icons.directions_car,
             Colors.purple,
@@ -390,7 +390,7 @@ class _StatisticsScreenState extends State<StatisticsScreen>
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Revenue Trend',
+            _localizationService.translate('statistics.revenue_trend'),
             style: TextStyle(
               fontSize: 18.sp,
               fontWeight: FontWeight.bold,
@@ -434,7 +434,7 @@ class _StatisticsScreenState extends State<StatisticsScreen>
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Payment Status',
+            _localizationService.translate('statistics.payment_status'),
             style: TextStyle(
               fontSize: 18.sp,
               fontWeight: FontWeight.bold,
@@ -445,15 +445,24 @@ class _StatisticsScreenState extends State<StatisticsScreen>
           Row(
             children: [
               Expanded(
-                child: _buildStatusItem('Paid', paidCount, Colors.green),
+                child: _buildStatusItem(
+                    _localizationService.translate('payment.paid'),
+                    paidCount,
+                    Colors.green),
               ),
               SizedBox(width: 16.w),
               Expanded(
-                child: _buildStatusItem('Pending', pendingCount, Colors.orange),
+                child: _buildStatusItem(
+                    _localizationService.translate('payment.pending'),
+                    pendingCount,
+                    Colors.orange),
               ),
               SizedBox(width: 16.w),
               Expanded(
-                child: _buildStatusItem('Overdue', overdueCount, Colors.red),
+                child: _buildStatusItem(
+                    _localizationService.translate('payment.overdue'),
+                    overdueCount,
+                    Colors.red),
               ),
             ],
           ),
@@ -520,7 +529,7 @@ class _StatisticsScreenState extends State<StatisticsScreen>
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Expenses Breakdown',
+            _localizationService.translate('statistics.expense_breakdown'),
             style: TextStyle(
               fontSize: 18.sp,
               fontWeight: FontWeight.bold,
@@ -599,7 +608,7 @@ class _StatisticsScreenState extends State<StatisticsScreen>
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Vehicle Performance',
+            _localizationService.translate('statistics.vehicle_performance'),
             style: TextStyle(
               fontSize: 18.sp,
               fontWeight: FontWeight.bold,
@@ -624,7 +633,7 @@ class _StatisticsScreenState extends State<StatisticsScreen>
           SizedBox(width: 12.w),
           Expanded(
             child: Text(
-              'Vehicle $vehicleId',
+              '${_localizationService.translate('vehicles.title')} $vehicleId',
               style: TextStyle(
                 fontSize: 14.sp,
                 color: Colors.grey.shade700,
@@ -665,7 +674,7 @@ class _StatisticsScreenState extends State<StatisticsScreen>
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Recent Activity',
+            _localizationService.translate('statistics.recent_activity'),
             style: TextStyle(
               fontSize: 18.sp,
               fontWeight: FontWeight.bold,

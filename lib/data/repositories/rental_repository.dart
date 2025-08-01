@@ -1,5 +1,5 @@
-import 'package:offline_rent_car/domain/models/rental.dart';
-import 'package:offline_rent_car/data/services/storage_service.dart';
+import 'package:rentra/domain/models/rental.dart';
+import 'package:rentra/data/services/storage_service.dart';
 
 class RentalRepository {
   final StorageService _storageService = StorageService();

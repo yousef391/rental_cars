@@ -1,6 +1,6 @@
 import 'dart:convert';
-import 'package:offline_rent_car/domain/models/company_settings.dart';
-import 'package:offline_rent_car/data/services/storage_service.dart';
+import 'package:rentra/domain/models/company_settings.dart';
+import 'package:rentra/data/services/storage_service.dart';
 
 class CompanySettingsRepository {
   final StorageService _storageService;

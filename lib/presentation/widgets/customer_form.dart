@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:offline_rent_car/presentation/blocs/customer_bloc.dart';
-import 'package:offline_rent_car/domain/models/customer.dart';
-import 'package:offline_rent_car/presentation/widgets/image_picker_widget.dart';
-import 'package:offline_rent_car/data/services/image_service.dart';
-import 'package:offline_rent_car/data/services/localization_service.dart';
+import 'package:rentra/presentation/blocs/customer_bloc.dart';
+import 'package:rentra/domain/models/customer.dart';
+import 'package:rentra/presentation/widgets/image_picker_widget.dart';
+import 'package:rentra/data/services/image_service.dart';
+import 'package:rentra/data/services/localization_service.dart';
 
 class CustomerForm extends StatefulWidget {
   final Customer? customer;

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:offline_rent_car/data/services/notification_service.dart';
-import 'package:offline_rent_car/data/services/localization_service.dart';
-import 'package:offline_rent_car/presentation/widgets/notification_settings.dart';
+import 'package:rentra/data/services/notification_service.dart';
+import 'package:rentra/data/services/localization_service.dart';
+import 'package:rentra/presentation/widgets/notification_settings.dart';
 import 'package:intl/intl.dart';
 
 class NotificationsScreen extends StatefulWidget {
@@ -111,7 +111,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                     ),
                     SizedBox(width: 8.w),
                     Text(
-                      'Refresh',
+                      _localizationService.translate('notifications.refresh'),
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 14.sp,
@@ -162,7 +162,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                     ),
                     SizedBox(width: 8.w),
                     Text(
-                      'Settings',
+                      _localizationService.translate('notifications.settings'),
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 14.sp,
@@ -207,7 +207,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                     ),
                     SizedBox(width: 8.w),
                     Text(
-                      'Clear All',
+                      _localizationService.translate('notifications.clear_all'),
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 14.sp,
@@ -266,7 +266,8 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
           ),
           SizedBox(height: 16.h),
           Text(
-            'Loading notifications...',
+            _localizationService
+                .translate('notifications.loading_notifications'),
             style: TextStyle(
               fontSize: 16.sp,
               color: Colors.grey.shade600,
@@ -296,7 +297,8 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
           ),
           SizedBox(height: 24.h),
           Text(
-            'No Scheduled Notifications',
+            _localizationService
+                .translate('notifications.no_scheduled_notifications'),
             style: TextStyle(
               fontSize: 24.sp,
               fontWeight: FontWeight.w600,
@@ -305,7 +307,8 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
           ),
           SizedBox(height: 8.h),
           Text(
-            'All notifications will appear here when scheduled',
+            _localizationService
+                .translate('notifications.no_notifications_message'),
             style: TextStyle(
               fontSize: 16.sp,
               color: Colors.grey.shade500,
@@ -386,7 +389,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                           ),
                           SizedBox(width: 4.w),
                           Text(
-                            'Scheduled: ${DateFormat('MMM dd, yyyy HH:mm').format(scheduledDate)}',
+                            '${_localizationService.translate('notifications.scheduled')}: ${DateFormat('MMM dd, yyyy HH:mm').format(scheduledDate)}',
                             style: TextStyle(
                               fontSize: 12.sp,
                               color: Colors.grey.shade500,
@@ -416,7 +419,8 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                           Icon(Icons.info_outline,
                               color: Colors.blue, size: 16.sp),
                           SizedBox(width: 8.w),
-                          const Text('View Details'),
+                          Text(_localizationService
+                              .translate('notifications.view_details')),
                         ],
                       ),
                     ),
@@ -426,7 +430,8 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                         children: [
                           Icon(Icons.cancel, color: Colors.red, size: 16.sp),
                           SizedBox(width: 8.w),
-                          const Text('Cancel'),
+                          Text(_localizationService
+                              .translate('notifications.cancel_notification')),
                         ],
                       ),
                     ),
@@ -484,21 +489,13 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
     return DateTime.now().add(Duration(hours: notification.id % 24));
   }
 
-  Future<void> _cancelNotification(int id) async {
-    try {
-      await _notificationService.cancelNotification(id);
-      await _loadPendingNotifications();
-      _showSuccessSnackBar('Notification cancelled successfully');
-    } catch (e) {
-      _showErrorSnackBar('Failed to cancel notification');
-    }
-  }
-
   void _showNotificationDetails(PendingNotificationRequest notification) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text(notification.title ?? 'Notification Details'),
+        title: Text(notification.title ??
+            _localizationService
+                .translate('notifications.notification_details')),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -524,7 +521,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
-            child: const Text('Close'),
+            child: Text(_localizationService.translate('common.close')),
           ),
         ],
       ),
@@ -535,13 +532,14 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Clear All Notifications'),
-        content: const Text(
-            'Are you sure you want to cancel all scheduled notifications?'),
+        title: Text(_localizationService
+            .translate('notifications.clear_all_notifications')),
+        content: Text(
+            _localizationService.translate('notifications.clear_all_confirm')),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
-            child: const Text('Cancel'),
+            child: Text(_localizationService.translate('common.cancel')),
           ),
           TextButton(
             onPressed: () async {
@@ -549,21 +547,12 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
               await _clearAllNotifications();
             },
             style: TextButton.styleFrom(foregroundColor: Colors.red),
-            child: const Text('Clear All'),
+            child:
+                Text(_localizationService.translate('notifications.clear_all')),
           ),
         ],
       ),
     );
-  }
-
-  Future<void> _clearAllNotifications() async {
-    try {
-      await _notificationService.cancelAllNotifications();
-      await _loadPendingNotifications();
-      _showSuccessSnackBar('All notifications cleared successfully');
-    } catch (e) {
-      _showErrorSnackBar('Failed to clear notifications');
-    }
   }
 
   void _showSuccessSnackBar(String message) {
@@ -584,5 +573,29 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
         behavior: SnackBarBehavior.floating,
       ),
     );
+  }
+
+  Future<void> _cancelNotification(int id) async {
+    try {
+      await _notificationService.cancelNotification(id);
+      await _loadPendingNotifications();
+      _showSuccessSnackBar(_localizationService
+          .translate('notifications.notification_cancelled'));
+    } catch (e) {
+      _showErrorSnackBar(_localizationService
+          .translate('notifications.notification_cancelled_error'));
+    }
+  }
+
+  Future<void> _clearAllNotifications() async {
+    try {
+      await _notificationService.cancelAllNotifications();
+      await _loadPendingNotifications();
+      _showSuccessSnackBar(_localizationService
+          .translate('notifications.all_notifications_cleared'));
+    } catch (e) {
+      _showErrorSnackBar(_localizationService
+          .translate('notifications.clear_notifications_error'));
+    }
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:offline_rent_car/domain/models/expense.dart';
-import 'package:offline_rent_car/data/repositories/expense_repository.dart';
+import 'package:rentra/domain/models/expense.dart';
+import 'package:rentra/data/repositories/expense_repository.dart';
 
 // Events
 abstract class ExpenseEvent extends Equatable {

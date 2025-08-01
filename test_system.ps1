@@ -1,7 +1,7 @@
 # CarRental Pro - System Testing Script
 # This script helps you test all components of your car rental system
 
-Write-Host "🚗 CarRental Pro - System Testing" -ForegroundColor Green
+Write-Host "🚗 Rentra - System Testing" -ForegroundColor Green
 Write-Host "=================================" -ForegroundColor Green
 
 # Test 1: Check if Flutter is available
@@ -16,7 +16,7 @@ try {
 
 # Test 2: Check if build files exist
 Write-Host "`n2. Testing Build Files..." -ForegroundColor Yellow
-$buildPath = "build\windows\x64\runner\Release\offline_rent_car.exe"
+$buildPath = "build\windows\x64\runner\Release\rentra.exe"
 if (Test-Path $buildPath) {
     Write-Host "✅ Windows executable exists" -ForegroundColor Green
     $fileSize = (Get-Item $buildPath).Length / 1MB
@@ -44,9 +44,9 @@ foreach ($file in $websiteFiles) {
 # Test 4: Check download files
 Write-Host "`n4. Testing Download Files..." -ForegroundColor Yellow
 $downloadFiles = @(
-    "website\downloads\CarRentalPro-Windows.zip",
-    "website\downloads\CarRentalPro-Source.zip",
-    "website\downloads\CarRentalPro-Docs.pdf"
+    "website\downloads\Rentra-Windows.zip",
+    "website\downloads\Rentra-Source.zip",
+    "website\downloads\Rentra-Docs.pdf"
 )
 
 foreach ($file in $downloadFiles) {
@@ -96,9 +96,23 @@ Write-Host "3. Test contact form" -ForegroundColor Gray
 Write-Host "4. Test responsive design" -ForegroundColor Gray
 
 Write-Host "`n📦 Test Downloads:" -ForegroundColor White
-Write-Host "1. Extract CarRentalPro-Windows.zip" -ForegroundColor Gray
-Write-Host "2. Run offline_rent_car.exe" -ForegroundColor Gray
+Write-Host "1. Extract Rentra-Windows.zip" -ForegroundColor Gray
+Write-Host "2. Run rentra.exe" -ForegroundColor Gray
 Write-Host "3. Verify all features work" -ForegroundColor Gray
+
+# Test 6: Check app icon
+Write-Host "`n6. Testing App Icon..." -ForegroundColor Yellow
+if (Test-Path "assets/logo.png") {
+    Write-Host "✅ logo.png found in assets" -ForegroundColor Green
+} else {
+    Write-Host "❌ logo.png not found in assets" -ForegroundColor Red
+}
+
+if (Test-Path "windows/runner/resources/app_icon.ico") {
+    Write-Host "✅ app_icon.ico found in Windows resources" -ForegroundColor Green
+} else {
+    Write-Host "❌ app_icon.ico not found in Windows resources" -ForegroundColor Red
+}
 
 Write-Host "`n🚀 Ready to Deploy!" -ForegroundColor Green
 Write-Host "Your car rental system is ready for distribution!" -ForegroundColor Green 

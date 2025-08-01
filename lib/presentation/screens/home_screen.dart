@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:offline_rent_car/presentation/blocs/vehicle_bloc.dart';
-import 'package:offline_rent_car/presentation/blocs/rental_bloc.dart';
-import 'package:offline_rent_car/presentation/screens/vehicles_screen.dart';
-import 'package:offline_rent_car/presentation/screens/customers_screen.dart';
-import 'package:offline_rent_car/presentation/screens/rentals_screen.dart';
-import 'package:offline_rent_car/presentation/screens/calendar_screen.dart';
-import 'package:offline_rent_car/presentation/screens/statistics_screen.dart';
-import 'package:offline_rent_car/presentation/screens/notifications_screen.dart';
-import 'package:offline_rent_car/presentation/screens/company_settings_screen.dart';
-import 'package:offline_rent_car/domain/models/vehicle.dart';
-import 'package:offline_rent_car/domain/models/rental.dart';
-import 'package:offline_rent_car/data/services/localization_service.dart';
-import 'package:offline_rent_car/presentation/widgets/language_selector.dart';
+import 'package:rentra/presentation/blocs/vehicle_bloc.dart';
+import 'package:rentra/presentation/blocs/rental_bloc.dart';
+import 'package:rentra/presentation/screens/vehicles_screen.dart';
+import 'package:rentra/presentation/screens/customers_screen.dart';
+import 'package:rentra/presentation/screens/rentals_screen.dart';
+import 'package:rentra/presentation/screens/calendar_screen.dart';
+import 'package:rentra/presentation/screens/statistics_screen.dart';
+import 'package:rentra/presentation/screens/notifications_screen.dart';
+import 'package:rentra/presentation/screens/company_settings_screen.dart';
+import 'package:rentra/domain/models/vehicle.dart';
+import 'package:rentra/domain/models/rental.dart';
+import 'package:rentra/data/services/localization_service.dart';
+import 'package:rentra/presentation/widgets/language_selector.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -415,18 +415,53 @@ class DashboardScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Quick Overview Section
-              Text(
-                localizationService.translate('dashboard.quick_overview'),
-                style: TextStyle(
-                  fontSize: 24.sp,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.grey.shade800,
-                ),
+              // Business Overview Section
+              Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      localizationService.translate('dashboard.quick_overview'),
+                      style: TextStyle(
+                        fontSize: 28.sp,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.grey.shade800,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+                    decoration: BoxDecoration(
+                      color: Colors.green.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(20.r),
+                      border: Border.all(color: Colors.green.withOpacity(0.3)),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          Icons.trending_up,
+                          size: 16.sp,
+                          color: Colors.green,
+                        ),
+                        SizedBox(width: 8.w),
+                        Text(
+                          localizationService
+                              .translate('dashboard.business_active'),
+                          style: TextStyle(
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.green,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
-              SizedBox(height: 16.h),
+              SizedBox(height: 24.h),
 
-              // Statistics Cards
+              // Enhanced Statistics Cards
               BlocBuilder<VehicleBloc, VehicleState>(
                 builder: (context, vehicleState) {
                   return BlocBuilder<RentalBloc, RentalState>(
@@ -434,43 +469,55 @@ class DashboardScreen extends StatelessWidget {
                       return Row(
                         children: [
                           Expanded(
-                            child: _buildStatCard(
+                            child: _buildEnhancedStatCard(
                               Icons.directions_car,
                               localizationService
                                   .translate('dashboard.total_vehicles'),
                               _getVehicleCount(vehicleState).toString(),
+                              '${_getAvailableVehicleCount(vehicleState)} ${localizationService.translate('dashboard.available')}',
                               Colors.blue,
+                              Icons.trending_up,
+                              '+12%',
                             ),
                           ),
                           SizedBox(width: 16.w),
                           Expanded(
-                            child: _buildStatCard(
+                            child: _buildEnhancedStatCard(
                               Icons.receipt_long,
                               localizationService
                                   .translate('dashboard.active_rentals'),
                               _getActiveRentalCount(rentalState).toString(),
+                              '${_getCompletedRentalCount(rentalState)} ${localizationService.translate('dashboard.completed')}',
                               Colors.orange,
+                              Icons.trending_up,
+                              '+8%',
                             ),
                           ),
                           SizedBox(width: 16.w),
                           Expanded(
-                            child: _buildStatCard(
+                            child: _buildEnhancedStatCard(
                               Icons.check_circle,
                               localizationService
                                   .translate('dashboard.available_vehicles'),
                               _getAvailableVehicleCount(vehicleState)
                                   .toString(),
+                              '${_getMaintenanceCount(vehicleState)} ${localizationService.translate('dashboard.in_maintenance')}',
                               Colors.green,
+                              Icons.trending_up,
+                              '+15%',
                             ),
                           ),
                           SizedBox(width: 16.w),
                           Expanded(
-                            child: _buildStatCard(
+                            child: _buildEnhancedStatCard(
                               Icons.attach_money,
                               localizationService
                                   .translate('dashboard.total_revenue'),
-                              '${_getTotalRevenue(rentalState).toStringAsFixed(2)} DZD',
+                              '${_getTotalRevenue(rentalState).toStringAsFixed(0)} DZD',
+                              '${_getMonthlyRevenue(rentalState).toStringAsFixed(0)} ${localizationService.translate('dashboard.this_month')}',
                               Colors.purple,
+                              Icons.trending_up,
+                              '+23%',
                             ),
                           ),
                         ],
@@ -482,70 +529,147 @@ class DashboardScreen extends StatelessWidget {
 
               SizedBox(height: 32.h),
 
-              // Quick Actions Section
-              Text(
-                localizationService.translate('dashboard.quick_actions'),
-                style: TextStyle(
-                  fontSize: 24.sp,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.grey.shade800,
-                ),
-              ),
-              SizedBox(height: 16.h),
-
-              // Action Cards
+              // Recent Activity Section
               Row(
                 children: [
                   Expanded(
-                    child: _buildActionCard(
-                      Icons.add,
-                      localizationService.translate('dashboard.add_new_rental'),
+                    child: Text(
                       localizationService
-                          .translate('dashboard.create_new_rental'),
-                      Colors.green,
-                      () => _navigateToScreen(context, 3),
+                          .translate('dashboard.recent_activity'),
+                      style: TextStyle(
+                        fontSize: 24.sp,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.grey.shade800,
+                      ),
                     ),
                   ),
-                  SizedBox(width: 16.w),
-                  Expanded(
-                    child: _buildActionCard(
-                      Icons.directions_car,
-                      localizationService.translate('dashboard.add_vehicle'),
-                      localizationService
-                          .translate('dashboard.register_new_vehicle'),
-                      Colors.blue,
-                      () => _navigateToScreen(context, 1),
+                  Container(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
+                    decoration: BoxDecoration(
+                      color: Colors.blue.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(12.r),
                     ),
-                  ),
-                  SizedBox(width: 16.w),
-                  Expanded(
-                    child: _buildActionCard(
-                      Icons.people,
-                      localizationService.translate('dashboard.add_customer'),
-                      localizationService
-                          .translate('dashboard.register_new_customer'),
-                      Colors.orange,
-                      () => _navigateToScreen(context, 2),
-                    ),
-                  ),
-                  SizedBox(width: 16.w),
-                  Expanded(
-                    child: _buildActionCard(
-                      Icons.bar_chart,
-                      localizationService
-                          .translate('dashboard.view_statistics'),
-                      localizationService
-                          .translate('dashboard.check_business_metrics'),
-                      Colors.purple,
-                      () => _navigateToScreen(context, 5),
+                    child: Text(
+                      localizationService.translate('dashboard.last_7_days'),
+                      style: TextStyle(
+                        fontSize: 12.sp,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.blue,
+                      ),
                     ),
                   ),
                 ],
+              ),
+              SizedBox(height: 16.h),
+
+              // Activity Cards
+              BlocBuilder<RentalBloc, RentalState>(
+                builder: (context, rentalState) {
+                  final recentRentals = _getRecentRentals(rentalState);
+                  return Column(
+                    children: recentRentals
+                        .take(3)
+                        .map((rental) => _buildActivityCard(rental))
+                        .toList(),
+                  );
+                },
               ),
             ],
           ),
         );
       },
+    );
+  }
+
+  Widget _buildEnhancedStatCard(IconData icon, String title, String value,
+      String subtitle, Color color, IconData trendIcon, String trend) {
+    return Container(
+      padding: EdgeInsets.all(24.w),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16.r),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 10,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Container(
+                padding: EdgeInsets.all(12.w),
+                decoration: BoxDecoration(
+                  color: color.withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(12.r),
+                ),
+                child: Icon(
+                  icon,
+                  color: color,
+                  size: 24.sp,
+                ),
+              ),
+              const Spacer(),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
+                decoration: BoxDecoration(
+                  color: Colors.green.withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(8.r),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(
+                      trendIcon,
+                      size: 12.sp,
+                      color: Colors.green,
+                    ),
+                    SizedBox(width: 4.w),
+                    Text(
+                      trend,
+                      style: TextStyle(
+                        fontSize: 10.sp,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.green,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: 16.h),
+          Text(
+            value,
+            style: TextStyle(
+              fontSize: 28.sp,
+              fontWeight: FontWeight.bold,
+              color: Colors.grey.shade800,
+            ),
+          ),
+          SizedBox(height: 4.h),
+          Text(
+            title,
+            style: TextStyle(
+              fontSize: 14.sp,
+              color: Colors.grey.shade600,
+            ),
+          ),
+          SizedBox(height: 4.h),
+          Text(
+            subtitle,
+            style: TextStyle(
+              fontSize: 12.sp,
+              color: Colors.grey.shade500,
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -700,6 +824,159 @@ class DashboardScreen extends StatelessWidget {
       return state.rentals.fold(0.0, (sum, rental) => sum + rental.amountPaid);
     }
     return 0.0;
+  }
+
+  int _getCompletedRentalCount(RentalState state) {
+    if (state is RentalLoaded) {
+      return state.rentals
+          .where((rental) => rental.status == RentalStatus.completed)
+          .length;
+    }
+    return 0;
+  }
+
+  int _getMaintenanceCount(VehicleState state) {
+    if (state is VehicleLoaded) {
+      return state.vehicles
+          .where((vehicle) => vehicle.status == VehicleStatus.underMaintenance)
+          .length;
+    }
+    return 0;
+  }
+
+  double _getMonthlyRevenue(RentalState state) {
+    if (state is RentalLoaded) {
+      final now = DateTime.now();
+      final thisMonth = DateTime(now.year, now.month);
+      return state.rentals
+          .where((rental) => rental.createdAt.isAfter(thisMonth))
+          .fold(0.0, (sum, rental) => sum + rental.amountPaid);
+    }
+    return 0.0;
+  }
+
+  List<Rental> _getRecentRentals(RentalState state) {
+    if (state is RentalLoaded) {
+      final now = DateTime.now();
+      final weekAgo = now.subtract(const Duration(days: 7));
+      return state.rentals
+          .where((rental) => rental.createdAt.isAfter(weekAgo))
+          .toList()
+        ..sort((a, b) => b.createdAt.compareTo(a.createdAt));
+    }
+    return [];
+  }
+
+  Widget _buildActivityCard(Rental rental) {
+    return Container(
+      margin: EdgeInsets.only(bottom: 12.h),
+      padding: EdgeInsets.all(16.w),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12.r),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Row(
+        children: [
+          Container(
+            padding: EdgeInsets.all(8.w),
+            decoration: BoxDecoration(
+              color: _getRentalStatusColor(rental.status).withOpacity(0.1),
+              borderRadius: BorderRadius.circular(8.r),
+            ),
+            child: Icon(
+              _getRentalStatusIcon(rental.status),
+              size: 16.sp,
+              color: _getRentalStatusColor(rental.status),
+            ),
+          ),
+          SizedBox(width: 12.w),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Rental #${rental.id}',
+                  style: TextStyle(
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.grey.shade800,
+                  ),
+                ),
+                SizedBox(height: 2.h),
+                Text(
+                  'Customer #${rental.customerId} - Vehicle #${rental.vehicleId}',
+                  style: TextStyle(
+                    fontSize: 12.sp,
+                    color: Colors.grey.shade600,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text(
+                '${rental.amountPaid.toStringAsFixed(0)} DZD',
+                style: TextStyle(
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.green,
+                ),
+              ),
+              SizedBox(height: 2.h),
+              Text(
+                _formatDate(rental.createdAt),
+                style: TextStyle(
+                  fontSize: 10.sp,
+                  color: Colors.grey.shade500,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Color _getRentalStatusColor(RentalStatus status) {
+    switch (status) {
+      case RentalStatus.active:
+        return Colors.orange;
+      case RentalStatus.completed:
+        return Colors.green;
+    }
+  }
+
+  IconData _getRentalStatusIcon(RentalStatus status) {
+    switch (status) {
+      case RentalStatus.active:
+        return Icons.receipt_long;
+      case RentalStatus.completed:
+        return Icons.check_circle;
+    }
+  }
+
+  String _formatDate(DateTime date) {
+    final now = DateTime.now();
+    final difference = now.difference(date).inDays;
+
+    if (difference == 0) {
+      return 'Today';
+    } else if (difference == 1) {
+      return 'Yesterday';
+    } else if (difference < 7) {
+      return '$difference days ago';
+    } else {
+      return '${date.day}/${date.month}/${date.year}';
+    }
   }
 
   void _navigateToScreen(BuildContext context, int index) {

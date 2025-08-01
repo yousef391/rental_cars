@@ -296,7 +296,10 @@
     "security_deposit_note": "ملاحظة: سيتم إرجاع الوديعة الأمنية عند إرجاع المركبة",
     "payment_successful": "تم تسجيل الدفع بنجاح",
     "invalid_amount": "يرجى إدخال مبلغ دفع صالح",
-    "amount_exceeds_balance": "مبلغ الدفع يتجاوز الرصيد المتبقي"
+    "amount_exceeds_balance": "مبلغ الدفع يتجاوز الرصيد المتبقي",
+    "paid": "مدفوع",
+    "pending": "معلق",
+    "overdue": "متأخر"
   },
   
   "completion": {
@@ -451,6 +454,65 @@
     "logo_hint": "ارفع شعار شركتك للعقود",
     "logo_uploaded": "تم رفع الشعار بنجاح",
     "logo_removed": "تم إزالة الشعار بنجاح",
-    "logo_error": "خطأ في رفع الشعار"
+    "logo_error": "خطأ في رفع الشعار",
+    "company_details": "تفاصيل الشركة",
+    "no_logo": "لا يوجد شعار",
+    "test_company_settings": "اختبار إعدادات الشركة"
+  },
+
+  "notifications": {
+    "title": "الإشعارات",
+    "subtitle": "إدارة الإشعارات والتنبيهات",
+    "refresh": "تحديث",
+    "settings": "الإعدادات",
+    "clear_all": "مسح الكل",
+    "loading_notifications": "جاري تحميل الإشعارات...",
+    "no_scheduled_notifications": "لا توجد إشعارات مجدولة",
+    "no_notifications_message": "ستظهر جميع الإشعارات هنا عند جدولتها",
+    "notification_details": "تفاصيل الإشعار",
+    "scheduled": "مجدول",
+    "view_details": "عرض التفاصيل",
+    "cancel_notification": "إلغاء",
+    "clear_all_notifications": "مسح جميع الإشعارات",
+    "clear_all_confirm": "هل أنت متأكد من إلغاء جميع الإشعارات المجدولة؟",
+    "notification_cancelled": "تم إلغاء الإشعار بنجاح",
+    "notification_cancelled_error": "فشل في إلغاء الإشعار",
+    "all_notifications_cleared": "تم مسح جميع الإشعارات بنجاح",
+    "clear_notifications_error": "فشل في مسح الإشعارات",
+    "notification_types": {
+      "rental": "الإيجار",
+      "maintenance": "الصيانة",
+      "license": "الرخصة",
+      "insurance": "التأمين",
+      "general": "عام"
+    }
+  },
+
+  "dashboard": {
+    "title": "لوحة التحكم",
+    "welcome_title": "مرحباً بك في مدير تأجير السيارات",
+    "welcome_subtitle": "إدارة أسطولك وعملائك والإيجارات بسهولة",
+    "manage_business": "إدارة عملك",
+    "quick_overview": "نظرة عامة سريعة",
+    "quick_actions": "الإجراءات السريعة",
+    "total_vehicles": "إجمالي المركبات",
+    "active_rentals": "الإيجارات النشطة",
+    "available_vehicles": "المركبات المتاحة",
+    "total_revenue": "إجمالي الإيرادات",
+    "add_new_rental": "إضافة إيجار جديد",
+    "create_new_rental": "إنشاء اتفاقية إيجار جديدة",
+    "add_vehicle": "إضافة مركبة",
+    "register_new_vehicle": "تسجيل مركبة جديدة",
+    "add_customer": "إضافة عميل",
+    "register_new_customer": "تسجيل عميل جديد",
+    "view_statistics": "عرض الإحصائيات",
+    "check_business_metrics": "تحقق من مقاييس عملك",
+    "business_active": "العمل نشط",
+    "recent_activity": "النشاط الأخير",
+    "last_7_days": "آخر 7 أيام",
+    "available": "متاح",
+    "completed": "مكتمل",
+    "in_maintenance": "في الصيانة",
+    "this_month": "هذا الشهر"
   }
 } 
